@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from selene.support.shared import browser
-from selene import have
+from selene import have, command
 
 import tests
 
@@ -30,7 +30,7 @@ class RegistrationPage:
         browser.element(f'.react-datepicker__day--0{day}').click()
 
     def submit(self):
-        browser.element("#submit").click()
+        browser.element('#submit').perform(command.js.click)
 
     def type_gender(self):
         browser.element('label[for="gender-radio-2"]').click()
