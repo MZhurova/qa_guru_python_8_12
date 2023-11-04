@@ -17,7 +17,7 @@ def test_registration(setup_browser):
         registration_page.type_date_of_birth('1990', '9', '04')
         registration_page.type_subjects('Maths')
         registration_page.type_hobbies()
-        registration_page.type_picture()
+        registration_page.type_picture('2012091208303549.png')
         registration_page.type_address('Tomsk, Altayskaya')
         registration_page.type_state('Haryana')
         registration_page.type_city('Panipat')

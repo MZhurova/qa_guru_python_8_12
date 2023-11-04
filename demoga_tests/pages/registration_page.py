@@ -1,9 +1,11 @@
 from selene.support.shared import browser
-import os
 from selene import have
 
 
 class RegistrationPage:
+
+    def __init__(self, setup_browser):
+        self.picture = browser.element('#uploadPicture')
 
     def open(self):
         browser.open('/automation-practice-form')
@@ -38,9 +40,9 @@ class RegistrationPage:
     def type_hobbies(self):
         browser.element('label[for="hobbies-checkbox-1"]').click()
 
-    def type_picture(self):
-        browser.element('#uploadPicture').send_keys(
-            os.path.abspath('image/2012091208303549.png'))
+    def type_picture(self, value):
+        p = str(Path(tests.__file__).parent.joinpath(f'image/{value}').absolute())
+        self.picture.set_value(p)
 
     def type_address(self, value):
         browser.element('#currentAddress').type(value)
