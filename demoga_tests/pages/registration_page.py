@@ -40,7 +40,7 @@ class RegistrationPage:
 
     def type_hobbies(self):
         browser.element('label[for="hobbies-checkbox-1"]').click()
-
+1
     def type_picture(self, value):
         browser.element('#uploadPicture').set_value(str(Path(tests.__file__).parent.joinpath(f'image/{value}').absolute()
     ))
