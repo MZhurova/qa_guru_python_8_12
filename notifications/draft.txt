@@ -1,0 +1,14 @@
+https://api.telegram.org/bot6793999020:AAFtdebQj2DoEkwqhAniUfk6xrhH6ukX9c8/getUpdates
+1332953879
+java -jar "-DconfigFile=notifications/config.json" notifications/allure-notifications-4.5.0.jar
+
+
+mac:
+curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"chat_id": "1332953879", "text": "This is a test from qa.guru", "disable_notification": true}' \
+     https://api.telegram.org/bot6793999020:AAFtdebQj2DoEkwqhAniUfk6xrhH6ukX9c8/sendMessage
+
+win:
+curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "1332953879", "text": "This is a test from qa.guru", "disable_notification": true}' \
+     https://api.telegram.org/bot6793999020:AAFtdebQj2DoEkwqhAniUfk6xrhH6ukX9c8/sendMessage

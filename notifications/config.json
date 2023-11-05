@@ -1,0 +1,17 @@
+{
+base: {
+logo: "",
+project: "MZhurova_qa_guru_python_8_12",
+environment: "PredProd",
+comment: "some comment @Mzhurova",
+reportLink: "https://jenkins.autotests.cloud/job/MZhurova_qa_guru_python_8_12/12/",
+language: "en",
+allureFolder: "allure-report",
+enableChart: true
+},
+telegram: {
+token: "6793999020:AAFtdebQj2DoEkwqhAniUfk6xrhH6ukX9c8",
+chat: "1332953879",
+replyTo: ""
+}
+}
