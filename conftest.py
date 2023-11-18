@@ -7,6 +7,14 @@ from dotenv import load_dotenv
 
 from utils import attach
 
+
+def pytest_addoption(parser):
+    parser.addoption(
+        '--browser_url',
+        default='selenoid.autotests.cloud/wd/hu'
+    )
+
+
 @pytest.fixture(scope='session', autouse=True)
 def load_env():
     load_dotenv()
@@ -14,6 +22,8 @@ def load_env():
 
 @pytest.fixture(scope='function')
 def setup_browser(request):
+    browser_url = request.config.getoption('--browser_url')
+    browser_url = browser_url if browser_url != "" else DEFAULT_BROWSER_URL
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -26,8 +36,9 @@ def setup_browser(request):
     options.capabilities.update(selenoid_capabilities)
     login = os.getenv('LOGIN')
     password = os.getenv('PASSWORD')
+    browser_url = os.getenv('DEFAULT_BROWSER_URL')
     driver = webdriver.Remote(
-        command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
+        command_executor=f"https://{login}:{password}@{browser_url}",
         options=options
     )
 
@@ -44,4 +55,3 @@ def setup_browser(request):
     attach.add_video(browser)
 
     browser.quit()
-
